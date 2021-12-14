@@ -1,7 +1,7 @@
 const {getUserByEmail} = require('./helper');
 const express = require("express");
 const app = express();
-const PORT = 8081; // default port 8081
+const PORT = 8081 // default port 8081
 const bodyParser = require("body-parser");
 const cookieSession = require('cookie-session')
 const bcrypt = require('bcryptjs');
@@ -44,12 +44,9 @@ const userDB = {
 
 
 app.get('/login', (req, res) => {
-  let userID = req.session.user_id;
-  console.log(userID)
+  const userID = req.session.user_id;
   let user = getUserById(userDB, userID);
-    const templateVars = {user: user};
-  
-  
+  const templateVars = {user: user};
   
 
   res.render('login', templateVars);
