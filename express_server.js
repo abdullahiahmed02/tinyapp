@@ -42,26 +42,20 @@ const userDB = {
   }
 }
 
-
-app.get('/login', (req, res) => {
-  let userID = req.session.user_id;
-  console.log(userID)
-  let user = getUserById(userDB, userID);
-    const templateVars = {user: user};
-  
-  
-  
-
-  res.render('login', templateVars);
-})
-
 app.get('/register', (req, res) => {
   const userID = req.session.user_id;
   let user = getUserById(userDB, userID);
 
-  
   const templateVars = {user: user};
   res.render('register', templateVars)
+})
+
+app.get('/login', (req, res) => {
+  const userID = req.session.user_id;
+  let user = getUserById(userDB, userID);
+  const templateVars = {user: user};
+  
+  res.render('login', templateVars);
 })
 
 app.get("/urls/new", (req, res) => {
