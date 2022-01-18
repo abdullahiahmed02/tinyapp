@@ -4,7 +4,7 @@ const {generateRandomString,
   getUserById,createUser} = require('./helper.js');
 const express = require("express");
 const app = express();
-const PORT = 8080; // default port 8080
+const PORT = 8081; // default port 8081
 const bodyParser = require("body-parser");
 const cookieSession = require('cookie-session')
 const bcrypt = require('bcrypt');

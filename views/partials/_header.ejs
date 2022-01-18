@@ -9,15 +9,16 @@
         <a class="nav-item nav-link" href="/urls">My URLs</a>
         <a class="nav-item nav-link" href="/urls/new">Create New URL</a>
       </div>
-      
+
     </div>
-    <div><%if (!user){%>
-    <form action="/login"method="POST"><input type="text" name="username">
-    <button type="submit">"login" </button>  </form>
-  <%} else {%>
-  logged in as <%= user.email %>  <form action="/logout"method="POST">
-    <button type="submit">"logout" </button>  </form>
-    <%}%>
-   </div>
-    </nav>
-  </header>
+  <div><%if (!user){%>
+  
+  <a class="btn btn-primary" href="/login">Login</a>
+  <a class="btn btn-primary" href="/register">Register</a>
+<%} else {%>
+logged in as <%= user.email %>  <form action="/logout"method="POST">
+  <button type="submit">"logout" </button>  </form>
+  <%}%>
+ </div>
+  </nav>
+</header>
