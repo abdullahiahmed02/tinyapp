@@ -167,7 +167,8 @@ app.post('/login', (req, res) => {
       res.status(403).send('Wrong Information!! Try again <a href="/login">login</a>')
     }
   } else {
-    res.redirect('/register');
+    // res.redirect('/register');
+    res.send("<p> Email does not Exist. Click <a href= '/register'> Here</a> to register</p>")
   }
     console.log('user', user);
 })
@@ -199,7 +200,8 @@ app.get("/", (req, res) => {
 
 app.get("/urls", (req, res) => {
   if(!userDB[req.session.user_id]) {
-    res.redirect('/login')
+    // res.redirect('/login')
+    res.send("<p>You should be logged in. Click <a href= '/login'> Here</a> to Login</p>")
 
   }
   const userID = req.session.user_id;

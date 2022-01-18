@@ -16,6 +16,7 @@
   <a class="btn btn-primary" href="/login">Login</a>
   <a class="btn btn-primary" href="/register">Register</a>
 <%} else {%>
+
 logged in as <%= user.email %>  <form action="/logout"method="POST">
   <button type="submit">"logout" </button>  </form>
   <%}%>
