@@ -1,24 +1,19 @@
-   
-const getUserByEmail = function (email, users) {
-  for (let userID in users) {
-    const user = users[userID]
-    if (email === user.email) {
-      return user
+const getUserByEmail = function(email, database) {
+  for(let userId in database){
+    if(database[userId].email === email){
+      return database[userId]
     }
   }
-  return undefined
-}
+  return false;
+};
 
-const urlsForUser = function(userID) {
-
+const urlsForUser = function(userID, urlDatabase) {
   let usersObject = {};
   for (const shortURL in urlDatabase) {
     if(urlDatabase[shortURL].userID === userID) {
-
       usersObject[shortURL] = urlDatabase[shortURL]
     }
   }
-
   return usersObject;
 }
 
@@ -29,21 +24,19 @@ const getUserById = function(userDB, userID) {
     return null;
   }
 }
+
 const createUser = function(email, password, users) {
   const userID = generateRandomString();
-
-
   users[userID] = {
     id: userID,
     email,
     password
   };
-
   return userID
 }
 
 function generateRandomString() {
-  let result = ' ';
+  let result = '';
   let characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
   let charactersLength = characters.length;
   for (let i = 0; i < 6; i ++) {
@@ -51,8 +44,6 @@ function generateRandomString() {
   }
   return result;
 }
-
-
 
 module.exports = {
   generateRandomString,
