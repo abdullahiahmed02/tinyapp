@@ -45,20 +45,23 @@ const userDB = {
   }
 }
 
-app.get('/register', (req, res) => {
-  const userID = req.session.user_id;
-  let user = getUserById(userDB, userID);
-  const templateVars = {user: user};
-
-  res.render('register', templateVars)
-})
 
 app.get('/login', (req, res) => {
   const userID = req.session.user_id;
   let user = getUserById(userDB, userID);
   const templateVars = {user: user};
   
+
   res.render('login', templateVars);
+})
+
+app.get('/register', (req, res) => {
+  const userID = req.session.user_id;
+  let user = getUserById(userDB, userID);
+
+  
+  const templateVars = {user: user};
+  res.render('register', templateVars)
 })
 
 app.get("/urls/new", (req, res) => {
@@ -164,7 +167,7 @@ app.post('/login', (req, res) => {
       res.status(403).send('Wrong Information!! Try again <a href="/login">login</a>')
     }
   } else {
-    res.status(403).send('Register <a href="/register">register</a> here!!')
+    res.redirect('/register');
   }
     console.log('user', user);
 })
@@ -188,6 +191,7 @@ app.post('/register', (req, res) => {
   res.redirect('/urls')
 })
 // HELPER FUNCTIONS
+
 
 app.get("/", (req, res) => {
   res.redirect("/login");
